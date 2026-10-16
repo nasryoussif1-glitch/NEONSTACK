@@ -1,0 +1,1494 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080b10">
+    <meta name="description" content="NEONSTACK - منصة المبرمجين لبناء المشاريع، اكتشاف الأدوات، وتطوير مهارات البرمجة.">
+
+    <title>NEONSTACK | Build Beyond Limits</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #080b10;
+            --surface: #0e131b;
+            --surface2: #121a23;
+            --green: #b6ff42;
+            --purple: #a78bfa;
+            --text: #f3f5f7;
+            --muted: #8c96a6;
+            --border: rgba(255,255,255,.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 15% 10%, rgba(182,255,66,.07), transparent 35%),
+                radial-gradient(ellipse at 90% 35%, rgba(167,139,250,.07), transparent 35%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8,11,16,.85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            direction: ltr;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            place-items: center;
+            background: var(--green);
+            color: #080b10;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(182,255,66,.2);
+            font-size: 22px;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--muted);
+            transition: .25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 11px 19px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #080b10;
+            border-color: var(--green);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(182,255,66,.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--green);
+            background: transparent;
+            border: 0;
+            font-size: 27px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 650px;
+            padding: 105px 0 85px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .badge {
+            direction: ltr;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 13px;
+            border: 1px solid rgba(182,255,66,.22);
+            background: rgba(182,255,66,.06);
+            border-radius: 30px;
+            font-size: 11px;
+            color: var(--green);
+            margin-bottom: 25px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--green);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5.4vw, 68px);
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .highlight {
+            display: block;
+            color: var(--green);
+            font-family: 'Space Grotesk', sans-serif;
+            direction: ltr;
+            letter-spacing: -3px;
+            text-shadow: 0 0 35px rgba(182,255,66,.12);
+        }
+
+        .hero p {
+            max-width: 490px;
+            color: var(--muted);
+            line-height: 2;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            padding: 14px 22px;
+        }
+
+        .hero-note {
+            margin-top: 28px;
+            font-size: 11px;
+            color: #697586;
+        }
+
+        /* CODE WINDOW */
+
+        .code-scene {
+            position: relative;
+            direction: ltr;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .glow {
+            position: absolute;
+            inset: 15%;
+            background: rgba(182,255,66,.13);
+            filter: blur(90px);
+            z-index: -1;
+        }
+
+        .code-window {
+            background: #0c1118;
+            border: 1px solid rgba(182,255,66,.18);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 30px 100px rgba(0,0,0,.4);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+        }
+
+        .window-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 17px 20px;
+            background: #101720;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .window-dots i {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #ff657a;
+        }
+
+        .window-dots i:nth-child(2) {
+            background: #ffd166;
+        }
+
+        .window-dots i:nth-child(3) {
+            background: var(--green);
+        }
+
+        .file-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            color: #8793a5;
+        }
+
+        .code-content {
+            display: flex;
+            padding: 27px 20px 30px;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 12px;
+            line-height: 2.2;
+            overflow-x: auto;
+        }
+
+        .line-numbers {
+            color: #465263;
+            padding-right: 20px;
+            text-align: right;
+            user-select: none;
+        }
+
+        .code {
+            color: #dbe5ef;
+            white-space: pre;
+        }
+
+        .purple { color: #c4a1ff; }
+        .green { color: #b6ff42; }
+        .orange { color: #ffbd7a; }
+        .blue { color: #83d8ff; }
+        .comment { color: #657386; }
+
+        .code-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 18px;
+            border-top: 1px solid var(--border);
+            color: #7d8a9b;
+            font: 10px 'Space Grotesk', sans-serif;
+        }
+
+        .code-footer span:first-child {
+            color: var(--green);
+        }
+
+        .floating-card {
+            position: absolute;
+            padding: 13px 17px;
+            border: 1px solid var(--border);
+            background: rgba(18,26,35,.95);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px #0005;
+        }
+
+        .floating-card small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .floating-card strong {
+            font: 700 15px 'Space Grotesk', sans-serif;
+            color: var(--green);
+        }
+
+        .card-one {
+            top: -25px;
+            left: -28px;
+        }
+
+        .card-two {
+            bottom: 20px;
+            right: -30px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* STATS */
+
+        .stats {
+            padding: 30px 0 75px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(255,255,255,.015);
+        }
+
+        .stat {
+            text-align: center;
+            padding: 27px 15px;
+            border-left: 1px solid var(--border);
+        }
+
+        .stat:last-child {
+            border-left: 0;
+        }
+
+        .stat h3 {
+            direction: ltr;
+            font: 700 29px 'Space Grotesk', sans-serif;
+            color: var(--green);
+            margin-bottom: 6px;
+        }
+
+        .stat p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* GENERAL SECTIONS */
+
+        section.content-section {
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 43px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            direction: ltr;
+            color: var(--green);
+            font: 700 11px 'Space Grotesk', sans-serif;
+            letter-spacing: 2px;
+            margin-bottom: 13px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(27px, 4vw, 39px);
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* FEATURE CARDS */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature-card {
+            padding: 27px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: linear-gradient(145deg, #10161f, #0b0f15);
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(182,255,66,.4);
+            box-shadow: 0 15px 40px #0003;
+        }
+
+        .feature-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: rgba(182,255,66,.09);
+            border: 1px solid rgba(182,255,66,.14);
+            font-size: 22px;
+            margin-bottom: 22px;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--green);
+            margin-top: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: .3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(167,139,250,.45);
+        }
+
+        .project-visual {
+            min-height: 165px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-one {
+            background: radial-gradient(circle, #214b34, #111c20 65%);
+        }
+
+        .visual-two {
+            background: radial-gradient(circle, #3c2b65, #171322 65%);
+        }
+
+        .visual-three {
+            background: radial-gradient(circle, #214363, #101b29 65%);
+        }
+
+        .visual-symbol {
+            font: 700 62px 'Space Grotesk', sans-serif;
+            color: white;
+            text-shadow: 0 0 30px rgba(255,255,255,.18);
+        }
+
+        .project-body {
+            padding: 22px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: rgba(182,255,66,.08);
+            color: var(--green);
+            border-radius: 5px;
+            padding: 4px 9px;
+            font: 10px 'Space Grotesk', sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .project-body h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .project-body p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .project-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 19px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            color: #9aa5b4;
+            font: 11px 'Space Grotesk', sans-serif;
+        }
+
+        .project-bottom a {
+            color: var(--green);
+        }
+
+        /* CODE PLAYGROUND */
+
+        .playground {
+            border: 1px solid rgba(182,255,66,.2);
+            background: #0c1118;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .playground-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 17px 22px;
+            background: #121923;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+        }
+
+        .playground-header h3 {
+            font-size: 14px;
+        }
+
+        .playground-header span {
+            font: 11px 'Space Grotesk', sans-serif;
+            color: var(--green);
+        }
+
+        .playground-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            direction: ltr;
+        }
+
+        .editor, .output {
+            min-width: 0;
+            padding: 20px;
+        }
+
+        .editor {
+            border-right: 1px solid var(--border);
+        }
+
+        .editor label, .output label {
+            display: block;
+            font: 11px 'Space Grotesk', sans-serif;
+            color: #8b98a9;
+            margin-bottom: 12px;
+        }
+
+        #codeInput {
+            display: block;
+            width: 100%;
+            min-height: 185px;
+            resize: vertical;
+            padding: 15px;
+            border: 1px solid var(--border);
+            outline: none;
+            border-radius: 9px;
+            background: #080c12;
+            color: var(--green);
+            font: 12px/1.8 monospace;
+        }
+
+        #codeInput:focus {
+            border-color: rgba(182,255,66,.5);
+        }
+
+        .run-btn {
+            margin-top: 13px;
+            padding: 10px 18px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--green);
+            color: #080b10;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        .output-box {
+            min-height: 185px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: #080c12;
+            color: #b6ff42;
+            font: 12px/1.9 monospace;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .playground-note {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 75px 0 100px;
+        }
+
+        .cta-box {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 65px 25px;
+            border: 1px solid rgba(182,255,66,.23);
+            border-radius: 22px;
+            background:
+                radial-gradient(ellipse at 50% 110%, rgba(182,255,66,.12), transparent 55%),
+                #0e141c;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .footer-links a:hover {
+            color: var(--green);
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            max-width: calc(100% - 50px);
+            background: #151e28;
+            color: var(--text);
+            border: 1px solid rgba(182,255,66,.35);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: .3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* REVEAL ANIMATION */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .7s, transform .7s;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 950px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-grid {
+                gap: 35px;
+            }
+
+            .hero h1 {
+                font-size: 46px;
+            }
+
+            .card-one {
+                left: -8px;
+            }
+
+            .card-two {
+                right: -8px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .navbar {
+                min-height: 70px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 5%;
+                right: 5%;
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 13px;
+                background: #0e131b;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px 5px;
+            }
+
+            .nav-actions .btn-outline {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .code-window {
+                transform: none;
+            }
+
+            .features-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-left: 0;
+            }
+
+            .stat:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .playground-main {
+                grid-template-columns: 1fr;
+            }
+
+            .editor {
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            section.content-section {
+                padding: 55px 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .logo {
+                font-size: 18px;
+                gap: 7px;
+            }
+
+            .logo-icon {
+                width: 34px;
+                height: 34px;
+            }
+
+            .nav-actions .btn {
+                padding: 9px 12px;
+                font-size: 11px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .hero h1 .highlight {
+                letter-spacing: -2px;
+            }
+
+            .floating-card {
+                padding: 10px 12px;
+            }
+
+            .card-one {
+                top: -35px;
+            }
+
+            .card-two {
+                bottom: -30px;
+            }
+
+            .code-content {
+                font-size: 10px;
+                padding: 20px 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+
+        <a href="#home" class="logo" aria-label="NEONSTACK Home">
+            <span class="logo-icon">&lt;/&gt;</span>
+            <span style="color:white">NEON<span>STACK</span></span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">الرئيسية</a>
+            <a href="#features">المميزات</a>
+            <a href="#projects">المشاريع</a>
+            <a href="#playground">جرّب الكود</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#projects" class="btn btn-outline">استكشف</a>
+            <a href="#playground" class="btn btn-primary">ابدأ الآن ↗</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+
+            <div class="hero-text reveal">
+
+                <div class="badge">
+                    <span class="status-dot"></span>
+                    YOUR NEXT DEV DESTINATION
+                </div>
+
+                <h1>
+                    كود أفكارك.
+                    <span class="highlight">Build The Future.</span>
+                </h1>
+
+                <p>
+                    عالمك البرمجي يبدأ من هنا.
+                    اكتشف أدوات المطورين، استلهم أفكار مشاريع جديدة،
+                    وجرّب كتابة الأكواد في مساحة واحدة مصممة خصيصًا لك.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#playground" class="btn btn-primary">
+                        جرّب محرر الأكواد &nbsp; ↗
+                    </a>
+
+                    <a href="#features" class="btn btn-outline">
+                        اكتشف المنصة
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    ✦ صُمّم للمطورين الطموحين ومحبي التكنولوجيا.
+                </div>
+
+            </div>
+
+            <div class="code-scene reveal">
+
+                <div class="glow"></div>
+
+                <div class="floating-card card-one">
+                    <small>BUILD STATUS</small>
+                    <strong>● READY TO CODE</strong>
+                </div>
+
+                <div class="code-window">
+
+                    <div class="window-bar">
+                        <div class="window-dots">
+                            <i></i><i></i><i></i>
+                        </div>
+                        <div class="file-name">neonstack.js</div>
+                    </div>
+
+                    <div class="code-content">
+
+                        <div class="line-numbers">
+                            01<br>02<br>03<br>04<br>05<br>
+                            06<br>07<br>08<br>09<br>10<br>11
+                        </div>
+
+                        <div class="code"><span class="purple">const</span> <span class="blue">developer</span> = {
+  name: <span class="orange">'Creative Mind'</span>,
+  skills: [
+    <span class="orange">'JavaScript'</span>,
+    <span class="orange">'React'</span>,
+    <span class="orange">'Innovation'</span>
+  ],
+  dream: <span class="green">'Build The Future'</span>
+};
+
+<span class="purple">function</span> <span class="green">createSomethingAmazing</span>() {
+  <span class="purple">return</span> <span class="orange">'NEONSTACK 🚀'</span>;
+}</div>
+
+                    </div>
+
+                    <div class="code-footer">
+                        <span>● All systems ready</span>
+                        <span>UTF-8 &nbsp; JavaScript</span>
+                    </div>
+
+                </div>
+
+                <div class="floating-card card-two">
+                    <small>CREATIVITY LEVEL</small>
+                    <strong>∞ UNLIMITED</strong>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STATS -->
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+
+                <div class="stat">
+                    <h3>∞</h3>
+                    <p>أفكار بلا حدود</p>
+                </div>
+
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>وقت للإبداع</p>
+                </div>
+
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>تركيز على التطوير</p>
+                </div>
+
+                <div class="stat">
+                    <h3>&lt;/&gt;</h3>
+                    <p>عالم البرمجة</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="content-section" id="features">
+        <div class="container">
+
+            <div class="section-heading reveal">
+                <span class="eyebrow">WHY NEONSTACK?</span>
+                <h2>كل ما تحتاجه لتطلق إبداعك</h2>
+                <p>
+                    أدوات وأفكار تساعدك على الانتقال من مجرد فكرة إلى مشروع برمجي.
+                </p>
+            </div>
+
+            <div class="features-grid">
+
+                <article class="feature-card reveal">
+                    <div class="feature-icon">⌨️</div>
+                    <h3>مساحة كتابة الأكواد</h3>
+                    <p>
+                        جرّب كتابة JavaScript وشاهد النتيجة مباشرة
+                        داخل مساحة تجريبية بسيطة وسريعة.
+                    </p>
+                    <a href="#playground" class="feature-link">
+                        جرّب بنفسك <span>↙</span>
+                    </a>
+                </article>
+
+                <article class="feature-card reveal">
+                    <div class="feature-icon">⚡</div>
+                    <h3>أدوات المطورين</h3>
+                    <p>
+                        اجمع الأدوات التي تحتاجها في مكان واحد،
+                        من تنسيق الأكواد إلى اختبار الأفكار البرمجية.
+                    </p>
+                    <a href="#projects" class="feature-link">
+                        استكشف المشاريع <span>↙</span>
+                    </a>
+                </article>
+
+                <article class="feature-card reveal">
+                    <div class="feature-icon">🚀</div>
+                    <h3>أفكار مشاريع جديدة</h3>
+                    <p>
+                        اكتشف نماذج أولية وأفكارًا لمواقع وتطبيقات
+                        تساعدك على تطوير مهاراتك وبناء معرض أعمالك.
+                    </p>
+                    <a href="#projects" class="feature-link">
+                        شاهد الأفكار <span>↙</span>
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="content-section" id="projects">
+        <div class="container">
+
+            <div class="section-heading reveal">
+                <span class="eyebrow">MADE FOR CREATORS</span>
+                <h2>ابدأ مشروعك القادم</h2>
+                <p>
+                    نماذج تجريبية تلهمك لبناء مشاريعك البرمجية الخاصة.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card reveal">
+
+                    <div class="project-visual visual-one">
+                        <div class="visual-symbol">&lt;/&gt;</div>
+                    </div>
+
+                    <div class="project-body">
+                        <span class="project-tag">WEB DEVELOPMENT</span>
+                        <h3>Dev Portfolio</h3>
+                        <p>
+                            ابنِ معرض أعمال احترافيًا لعرض مشاريعك
+                            ومهاراتك البرمجية بطريقة جذابة.
+                        </p>
+
+                        <div class="project-bottom">
+                            <span>HTML · CSS · JS</span>
+                            <a href="#playground">اكتشف ↗</a>
+                        </div>
+                    </div>
+
+                </article>
+
+                <article class="project-card reveal">
+
+                    <div class="project-visual visual-two">
+                        <div class="visual-symbol">✳</div>
+                    </div>
+
+                    <div class="project-body">
+                        <span class="project-tag">UI / UX DESIGN</span>
+                        <h3>NextGen Dashboard</h3>
+                        <p>
+                            صمّم لوحة تحكم عصرية بواجهة داكنة
+                            وتجربة استخدام سهلة ومنظمة.
+                        </p>
+
+                        <div class="project-bottom">
+                            <span>DESIGN · UI</span>
+                            <a href="#playground">اكتشف ↗</a>
+                        </div>
+                    </div>
+
+                </article>
+
+                <article class="project-card reveal">
+
+                    <div class="project-visual visual-three">
+                        <div class="visual-symbol">⌘</div>
+                    </div>
+
+                    <div class="project-body">
+                        <span class="project-tag">JAVASCRIPT</span>
+                        <h3>Smart Code Lab</h3>
+                        <p>
+                            مساحة تجريبية لاختبار الأفكار البرمجية
+                            والتعلم من خلال كتابة الأكواد.
+                        </p>
+
+                        <div class="project-bottom">
+                            <span>JS · LOGIC</span>
+                            <a href="#playground">اكتشف ↗</a>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+
+    <section class="content-section" id="playground">
+        <div class="container">
+
+            <div class="section-heading reveal">
+                <span class="eyebrow">LIVE PLAYGROUND</span>
+                <h2>اكتب الكود وشاهد النتيجة</h2>
+                <p>
+                    جرّب JavaScript مباشرة من المتصفح دون تثبيت محرر أكواد.
+                </p>
+            </div>
+
+            <div class="playground reveal">
+
+                <div class="playground-header">
+                    <h3>⚡ مساحة التجربة البرمجية</h3>
+                    <span>JavaScript / Browser</span>
+                </div>
+
+                <div class="playground-main">
+
+                    <div class="editor">
+                        <label for="codeInput">EDITOR.JS</label>
+
+                        <textarea id="codeInput" spellcheck="false">console.log("Welcome to NEONSTACK!");
+console.log("Start building something amazing.");
+
+const x = 10;
+const y = 20;
+
+console.log("Result:", x + y);</textarea>
+
+                        <button class="run-btn" id="runCode">
+                            ▶ تشغيل الكود
+                        </button>
+                    </div>
+
+                    <div class="output">
+                        <label>OUTPUT / CONSOLE</label>
+
+                        <div class="output-box" id="outputBox" aria-live="polite">جاهز لتشغيل الكود...</div>
+
+                        <p class="playground-note">
+                            ملاحظة: مساحة التجربة مخصصة للأكواد البسيطة.
+                            يتم تعطيل الوصول إلى الشبكة وواجهات المتصفح داخل
+                            بيئة التشغيل قدر الإمكان، لكنها ليست بيئة تنفيذ
+                            معزولة بالكامل. لا تشغّل أكوادًا غير موثوقة.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta">
+        <div class="container">
+
+            <div class="cta-box reveal">
+                <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
+
+                <h2>فكرتك تستحق أن تصبح حقيقة.</h2>
+
+                <p>
+                    ابدأ بالتجربة، تعلّم من كل سطر كود،
+                    وابنِ شيئًا تفتخر به.
+                    <br>
+                    مستقبل البرمجة يبدأ بفكرة واحدة.
+                </p>
+
+                <a href="#playground" class="btn btn-primary">
+                    ابدأ البرمجة الآن ↗
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container footer-content">
+
+        <a href="#home" class="logo">
+            <span class="logo-icon">&lt;/&gt;</span>
+            <span style="color:white">NEON<span>STACK</span></span>
+        </a>
+
+        <p>© <span id="year"></span> NEONSTACK. صُنع بشغف للمبرمجين.</p>
+
+        <div class="footer-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#features">المميزات</a>
+            <a href="#projects">المشاريع</a>
+        </div>
+
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.textContent = "☰";
+        });
+    });
+
+    // Reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+        revealObserver.observe(element);
+    });
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // JavaScript playground
+    const codeInput = document.getElementById("codeInput");
+    const outputBox = document.getElementById("outputBox");
+    const runButton = document.getElementById("runCode");
+
+    runButton.addEventListener("click", () => {
+        const code = codeInput.value;
+
+        outputBox.textContent = "";
+
+        const logs = [];
+
+        const safeConsole = {
+            log: (...args) => {
+                logs.push(args.map(formatValue).join(" "));
+            },
+            info: (...args) => {
+                logs.push(args.map(formatValue).join(" "));
+            },
+            warn: (...args) => {
+                logs.push("[تحذير] " + args.map(formatValue).join(" "));
+            },
+            error: (...args) => {
+                logs.push("[خطأ] " + args.map(formatValue).join(" "));
+            }
+        };
+
+        function formatValue(value) {
+            if (typeof value === "string") return value;
+
+            try {
+                const result = JSON.stringify(value);
+                return result === undefined ? String(value) : result;
+            } catch {
+                return String(value);
+            }
+        }
+
+        try {
+            /*
+             * هذه مساحة تجريبية وليست Sandbox أمنية كاملة.
+             * نستخدم Function لتوفير console تجريبية ووقت تنفيذ محدود
+             * قدر الإمكان، لكن لا يجب تشغيل أكواد غير موثوقة.
+             */
+            const runner = new Function(
+                "console",
+                `
+                "use strict";
+                ${code}
+                `
+            );
+
+            const startedAt = performance.now();
+
+            runner(safeConsole);
+
+            const elapsed = performance.now() - startedAt;
+
+            if (elapsed > 1000) {
+                logs.push("انتهى التنفيذ، لكن الكود استغرق وقتًا طويلًا.");
+            }
+
+            outputBox.textContent = logs.length
+                ? logs.join("\\n")
+                : "تم التنفيذ بنجاح، ولا توجد مخرجات.";
+
+        } catch (error) {
+            outputBox.textContent =
+                "Error: " + (error?.message || "حدث خطأ أثناء التنفيذ.");
+        }
+    });
+
+    // Toast helper
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(window.toastTimer);
+
+        window.toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2800);
+    }
+</script>
+
+</body>
+</html>
+```
